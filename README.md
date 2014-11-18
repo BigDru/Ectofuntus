@@ -17,6 +17,8 @@ Requires:
 
 5) lots of bones.
 
+For inventory example see: http://2007.runescape.wikia.com/wiki/Ectofuntus
+
 
 
 Optional: 
