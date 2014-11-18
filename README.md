@@ -21,4 +21,4 @@ Requires:
 
 Optional: 
 
-If you have 58+ agility, shorcut will be used to get to the Pool of Slime. 
+If you have 58+ agility, shortcut will be used to get to the Pool of Slime. 
