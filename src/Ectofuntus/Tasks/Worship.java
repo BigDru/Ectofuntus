@@ -60,25 +60,17 @@ public class Worship extends Task<ClientContext> {
             path.traverse();
         } while (ctx.players.local().tile().distanceTo(Tiles.GhostDisciple) > 2);
 
+        // talk to disciple
         do {
-            // talk to disciple
-            do {
-                Npc ghost = ctx.npcs.select().id(Ids.GhostDisciple).nearest().poll();
-                ctx.camera.turnTo(ghost);
-                ghost.click(true);
-                Toolbox.sleep(1000);
-            } while (ctx.widgets.select().id(Ids.Widget_GhostDisciple1).isEmpty());
-            System.out.println("talking");
-            do {
-                System.out.println("stuck");
-                ctx.widgets.component(Ids.Widget_GhostDisciple1, Ids.Widget_GhostDisciple1_Component).click(true);
-                Toolbox.sleep(1000);
-                ctx.widgets.component(Ids.Widget_GhostDisciple2, Ids.Widget_GhostDisciple2_Component).click(true);
-                Toolbox.sleep(1000);
-            } while (!ctx.widgets.select().id(Ids.Widget_GhostDisciple2).isEmpty());
-
-            Toolbox.sleep(1250);
-        } while (Toolbox.itemInInventory(ctx, Ids.EctoToken));
+            Npc ghost = ctx.npcs.select().id(Ids.GhostDisciple).nearest().poll();
+            ctx.camera.turnTo(ghost);
+            ghost.click(true);
+            Toolbox.sleep(2500);
+            ctx.widgets.component(Ids.Widget_GhostDisciple1, Ids.Widget_GhostDisciple1_Component).click(true);
+            Toolbox.sleep(500);
+            ctx.widgets.component(Ids.Widget_GhostDisciple2, Ids.Widget_GhostDisciple2_Component).click(true);
+            Toolbox.sleep(500);
+        } while (!Toolbox.itemInInventory(ctx, Ids.EctoToken));
 
         return 0;
     }

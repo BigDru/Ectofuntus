@@ -19,7 +19,7 @@
     <file path="/MiscConstants.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416339612020" ignored="false" />
     <file path="/GetBonemeal.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416364476325" ignored="false" />
     <file path="/GetSlimeBuckets.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416368795436" ignored="false" />
-    <file path="/Worship.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416372507789" ignored="false" />
+    <file path="/Worship.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416375429781" ignored="false" />
     <file path="/GoToBank.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416368864065" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +116,7 @@
       <file leaf-file-name="Worship.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Tasks/Worship.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="32" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.7868339">
+            <state line="67" column="27" selection-start="2361" selection-end="2361" vertical-scroll-proportion="0.5736677">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,7 +136,7 @@
       <file leaf-file-name="GoToBank.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="29" selection-start="3012" selection-end="3012" vertical-scroll-proportion="0.0">
+            <state line="98" column="74" selection-start="4181" selection-end="4181" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,11 +196,11 @@
         <option value="$PROJECT_DIR$/src/Ectofuntus/Ectofuntus.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/GetBonemeal.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Ids.java" />
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/GetSlimeBuckets.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Tiles.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Actions.java" />
         <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/Worship.java" />
+        <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java" />
       </list>
     </option>
   </component>
@@ -471,7 +471,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -493,7 +493,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11259338" sideWeight="0.73942095" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13927428" sideWeight="0.73942095" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -600,15 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="29" selection-start="3012" selection-end="3012" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Ids.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="41" selection-start="1138" selection-end="1151" vertical-scroll-proportion="0.0">
@@ -658,9 +649,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="74" selection-start="4181" selection-end="4181" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ectofuntus/Tasks/Worship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="32" selection-start="2892" selection-end="2892" vertical-scroll-proportion="0.7868339">
+        <state line="67" column="27" selection-start="2361" selection-end="2361" vertical-scroll-proportion="0.5736677">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

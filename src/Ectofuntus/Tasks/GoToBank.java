@@ -105,8 +105,8 @@ public class GoToBank extends Task<ClientContext> {
 
         // go to bank
         System.out.println("Walking to bank");
-        path = ctx.movement.findPath(Tiles.Bank);
         do {
+            path = ctx.movement.findPath(Tiles.Bank);
             path.traverse();
         } while (ctx.players.local().tile().distanceTo(Tiles.Bank) > 1);
 
