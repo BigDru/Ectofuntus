@@ -15,10 +15,12 @@ Requires:
 
 4) 9 pots
 
-5) lots of bones.
+5) lots of bones (script does not stop when you run out of bones. It also glitches when you withdraw less than 9.)
+
+6) Ghostspeak amulet
 
 
 
 Optional: 
 
-If you have 58+ agility, shortcut will be used to get to the Pool of Slime. 
+If you have 58+ agility, shortcut will be used to get to the Pool of Slime. (Has not been tested as I don't have an account with a sufficiently high agility level.
