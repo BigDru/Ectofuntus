@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 2:34 AM
  * Purpose: Main script.
  */
-@Script.Manifest(name = "Master Ectofuntus", description = "Requires completion of Ghosts Ahoy Quest. Requires Full ectophial, 9 buckets, 9 pots, and lots of bones. Starts near Port Phasmatys Bank or with full Ectophial in inventory. Requires Ghostspeak Amulet equipped.")
+@Script.Manifest(name = "Master Ectofuntus", description = "Levels up Prayer FAST! Req: lots of bones, ectophial, completion of Ghosts Ahoy.")
 public class Ectofuntus extends PollingScript<ClientContext> {
     private List<Task> taskList = new ArrayList<Task>();
 
