@@ -20,12 +20,17 @@ public class Ids {
     public static final int StairsToGrinder = 16646;
     public static final int Trapdoor_Closed = 16113;
     public static final int Trapdoor_Open = 16114;
-    public static final int Ladder = 16110;
     public static final int WeatheredWall_FromAbove = 16526;
-    public static final int WeatheredWall_FromBelow = 16525;
     public static final int StairsToSlime_FromAbove = 16109;
-    public static final int StairsToSlime_FromBelow = 16108;
     public static final int PoolOfSlime = 17119;
-    public static final int BuckerOfSlime = 4286;
+    public static final int BucketOfSlime = 4286;
     public static final int Ectofuntus = 16648;
+    public static final int EnergyBarrier = 16105;
+    public static final int BankBooth = 16642;
+    public static final int GhostDisciple = 2988;
+    public static final int Widget_GhostDisciple1 = 64;
+    public static final int Widget_GhostDisciple1_Component = 3;
+    public static final int Widget_GhostDisciple2 = 241;
+    public static final int Widget_GhostDisciple2_Component = 3;
+    public static final int EctoToken = 4278;
 }

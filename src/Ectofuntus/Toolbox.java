@@ -1,6 +1,9 @@
 package Ectofuntus;
 
 import org.powerbot.script.rt4.ClientContext;
+import org.powerbot.script.rt4.Item;
+
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,14 +13,44 @@ import org.powerbot.script.rt4.ClientContext;
  * Purpose: Provides useful static functions.
  */
 public class Toolbox {
-    public static boolean isPlayerIdle(ClientContext ctx){
-        return ctx.players.local().animation()==-1;
+    public static boolean isPlayerIdle(ClientContext ctx) {
+        return ctx.players.local().animation() == -1;
     }
 
-    public static void sleep(int x){
+    public static void sleep(int x) {
+        Random r = new Random();
+        int sign = r.nextInt(2);
+        if (sign == 0)
+            sign = -1;
+        else
+            sign = 1;
+
+        int randomOffset = r.nextInt((int) (x*0.1));
+
         try {
-            Thread.sleep(x);
+            Thread.sleep(x + (sign*randomOffset));
         } catch (InterruptedException e) {
         }
+    }
+
+    public static boolean isInventoryFull(ClientContext ctx){
+        return ctx.inventory.size() == MiscConstants.inventorySize;
+    }
+
+    public static boolean itemInInventory(ClientContext ctx, int ID) {
+        for (Item i : ctx.inventory.items()) {
+            if (i.id() == ID)
+                return true;
+        }
+        return false;
+    }
+
+    public static int countItemInInventory(ClientContext ctx, int ID){
+        int count = 0;
+        for (Item i : ctx.inventory.items()){
+            if (i.id() == ID)
+                count++;
+        }
+        return count;
     }
 }
