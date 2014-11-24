@@ -1,4 +1,4 @@
-package Ectofuntus;
+package ectofuntus;
 
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Item;
@@ -34,21 +34,21 @@ public class Toolbox {
     }
 
     public static boolean isInventoryFull(ClientContext ctx){
-        return ctx.inventory.size() == MiscConstants.inventorySize;
+        return ctx.inventory.size() == MiscConstants.INVENTORY_SIZE;
     }
 
-    public static boolean itemInInventory(ClientContext ctx, int ID) {
+    public static boolean itemInInventory(ClientContext ctx, int id) {
         for (Item i : ctx.inventory.items()) {
-            if (i.id() == ID)
+            if (i.id() == id)
                 return true;
         }
         return false;
     }
 
-    public static int countItemInInventory(ClientContext ctx, int ID){
+    public static int countItemInInventory(ClientContext ctx, int id){
         int count = 0;
         for (Item i : ctx.inventory.items()){
-            if (i.id() == ID)
+            if (i.id() == id)
                 count++;
         }
         return count;

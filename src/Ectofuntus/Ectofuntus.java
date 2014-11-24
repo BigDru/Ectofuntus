@@ -1,6 +1,6 @@
-package Ectofuntus;
+package ectofuntus;
 
-import Ectofuntus.Tasks.*;
+import ectofuntus.tasks.*;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
 import org.powerbot.script.rt4.ClientContext;

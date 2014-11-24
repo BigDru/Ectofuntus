@@ -1,6 +1,6 @@
-package Ectofuntus.Tasks;
+package ectofuntus.tasks;
 
-import Ectofuntus.*;
+import ectofuntus.*;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Npc;
 import org.powerbot.script.rt4.Path;
@@ -20,8 +20,8 @@ public class Worship extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        boolean maxBonemeal = Toolbox.countItemInInventory(ctx, Ids.Bonemeal) == MiscConstants.maxNumPots;
-        boolean maxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BucketOfSlime) == MiscConstants.maxNumBuckets;
+        boolean maxBonemeal = Toolbox.countItemInInventory(ctx, Ids.BONEMEAL) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean maxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BUCKET_OF_SLIME) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         return (maxBonemeal && maxBucketsOfSlime);
     }
 
@@ -29,48 +29,48 @@ public class Worship extends Task<ClientContext> {
     public int execute() {
         System.out.println("worship");
         // are we at ectofuntus?
-        double distanceToEctofuntus = ctx.objects.select().id(Ids.Ectofuntus).nearest().poll().tile().distanceTo(ctx.players.local().tile());
+        double distanceToEctofuntus = ctx.objects.select().id(Ids.ECTOFUNTUS).nearest().poll().tile().distanceTo(ctx.players.local().tile());
         if (distanceToEctofuntus > 10 || distanceToEctofuntus == -1) {
             // no? tele there.
-            ctx.inventory.select().id(Ids.Ectophial_Full).poll().interact(true, Actions.Empty);
+            ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
 
             // wait to fill up ectophial again
             do {
                 Toolbox.sleep(1000);
-            } while (Toolbox.itemInInventory(ctx, Ids.Ectophial_Empty));
+            } while (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_EMPTY));
         }
 
         // we are at ectofuntus
         // worship
-        if (!ctx.objects.select().id(Ids.Ectofuntus).poll().inViewport()) {
-            ctx.camera.turnTo(ctx.objects.select().id(Ids.Ectofuntus).poll());
+        if (!ctx.objects.select().id(Ids.ECTOFUNTUS).poll().inViewport()) {
+            ctx.camera.turnTo(ctx.objects.select().id(Ids.ECTOFUNTUS).poll());
         }
 
         do {
-            ctx.objects.select().id(Ids.Ectofuntus).poll().interact(true, Actions.Worship);
+            ctx.objects.select().id(Ids.ECTOFUNTUS).poll().interact(true, Actions.WORSHIP);
             do {
                 Toolbox.sleep(2500);
             } while (!Toolbox.isPlayerIdle(ctx));
-        } while (Toolbox.itemInInventory(ctx, Ids.BucketOfSlime));
+        } while (Toolbox.itemInInventory(ctx, Ids.BUCKET_OF_SLIME));
 
         // get Ecto-tokens
         System.out.println("Collecting Ecto-tokens");
-        Path path = ctx.movement.findPath(Tiles.GhostDisciple);
+        Path path = ctx.movement.findPath(Tiles.GHOST_DISCIPLE);
         do {
             path.traverse();
-        } while (ctx.players.local().tile().distanceTo(Tiles.GhostDisciple) > 2);
+        } while (ctx.players.local().tile().distanceTo(Tiles.GHOST_DISCIPLE) > 2);
 
         // talk to disciple
         do {
-            Npc ghost = ctx.npcs.select().id(Ids.GhostDisciple).nearest().poll();
+            Npc ghost = ctx.npcs.select().id(Ids.GHOST_DISCIPLE).nearest().poll();
             ctx.camera.turnTo(ghost);
             ghost.click(true);
             Toolbox.sleep(2500);
-            ctx.widgets.component(Ids.Widget_GhostDisciple1, Ids.Widget_GhostDisciple1_Component).click(true);
+            ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_1, Ids.WIDGET_GHOST_DISCIPLE_1_COMPONENT).click(true);
             Toolbox.sleep(500);
-            ctx.widgets.component(Ids.Widget_GhostDisciple2, Ids.Widget_GhostDisciple2_Component).click(true);
+            ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_2, Ids.WIDGET_GHOST_DISCIPLE_2_COMPONENT).click(true);
             Toolbox.sleep(500);
-        } while (!Toolbox.itemInInventory(ctx, Ids.EctoToken));
+        } while (!Toolbox.itemInInventory(ctx, Ids.ECTO_TOKEN));
 
         return 0;
     }

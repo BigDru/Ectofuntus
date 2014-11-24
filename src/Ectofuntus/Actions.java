@@ -1,4 +1,4 @@
-package Ectofuntus;
+package ectofuntus;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,14 +8,14 @@ package Ectofuntus;
  * Purpose: Keeps record of possible interactions.
  */
 public class Actions {
-    public static final String Use = "Use";
-    public static final String Wind = "Wind";
-    public static final String Empty = "Empty"; // Ectophial and bin
-    public static final String Open = "Open";
-    public static final String ClimbDown = "Climb-down";
-    public static final String ClimbUp = "Climb-up";
-    public static final String JumpDown = "Jump-down";
-    public static final String Worship = "Worship";
-    public static final String PayToll = "Pay-toll(2-Ecto)";
-    public static final String Bank = "Bank";
+    public static final String USE = "Use";
+    public static final String WIND = "Wind";
+    public static final String EMPTY = "Empty"; // Ectophial and bin
+    public static final String OPEN = "Open";
+    public static final String CLIMB_DOWN = "Climb-down";
+    public static final String CLIMB_UP = "Climb-up";
+    public static final String JUMP_DOWN = "Jump-down";
+    public static final String WORSHIP = "Worship";
+    public static final String PAY_TOLL = "Pay-toll(2-Ecto)";
+    public static final String BANK = "Bank";
 }

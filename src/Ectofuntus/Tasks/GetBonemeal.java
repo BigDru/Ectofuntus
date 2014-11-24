@@ -1,6 +1,6 @@
-package Ectofuntus.Tasks;
+package ectofuntus.tasks;
 
-import Ectofuntus.*;
+import ectofuntus.*;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Path;
@@ -20,9 +20,9 @@ public class GetBonemeal extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        boolean maxPots = Toolbox.countItemInInventory(ctx, Ids.Pot) == MiscConstants.maxNumPots;
-        boolean maxBones = Toolbox.countItemInInventory(ctx, Ids.Bones) == MiscConstants.maxNumBones;
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.Ectophial_Full);
+        boolean maxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean maxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
         return (maxBones && maxPots && hasEctophial);
     }
 
@@ -30,25 +30,25 @@ public class GetBonemeal extends Task<ClientContext> {
     public int execute() {
         System.out.println("Bonemeal");
         // are we at ectofuntus?
-        double distanceToEctofuntus = ctx.objects.select().id(Ids.Ectofuntus).nearest().poll().tile().distanceTo(ctx.players.local().tile());
+        double distanceToEctofuntus = ctx.objects.select().id(Ids.ECTOFUNTUS).nearest().poll().tile().distanceTo(ctx.players.local().tile());
         if (distanceToEctofuntus > 10 || distanceToEctofuntus == -1) {
             // no? tele there.
-            ctx.inventory.select().id(Ids.Ectophial_Full).poll().interact(true, Actions.Empty);
+            ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
 
             // wait to fill up ectophial again
             do {
                 Toolbox.sleep(1000);
-            } while (Toolbox.itemInInventory(ctx, Ids.Ectophial_Empty));
+            } while (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_EMPTY));
         }
 
         // we are at ectofuntus
         // find stairs
-        Path path = ctx.movement.findPath(Tiles.StairsToGrinder);
+        Path path = ctx.movement.findPath(Tiles.STAIRS_TO_GRINDER);
         do {
             path.traverse();
-        } while (ctx.players.local().tile().distanceTo(Tiles.StairsToGrinder) > 1);
+        } while (ctx.players.local().tile().distanceTo(Tiles.STAIRS_TO_GRINDER) > 1);
 
-        GameObject stairs = ctx.objects.select().id(Ids.StairsToGrinder).nearest().poll();
+        GameObject stairs = ctx.objects.select().id(Ids.STAIRS_TO_GRINDER).nearest().poll();
         while (!stairs.inViewport()) {
             ctx.camera.turnTo(stairs);
             Toolbox.sleep(500);
@@ -56,15 +56,15 @@ public class GetBonemeal extends Task<ClientContext> {
 
         // go up stairs
         do {
-            stairs.interact(true, Actions.ClimbUp);
+            stairs.interact(true, Actions.CLIMB_UP);
             Toolbox.sleep(1000);
-        } while (ctx.players.local().tile().floor() != Tiles.Grinder.floor());
+        } while (ctx.players.local().tile().floor() != Tiles.GRINDER.floor());
 
         // walk to grinder
-        path = ctx.movement.findPath(Tiles.Grinder);
+        path = ctx.movement.findPath(Tiles.GRINDER);
         do {
             path.traverse();
-        } while (ctx.players.local().tile().distanceTo(Tiles.Grinder) > 2);
+        } while (ctx.players.local().tile().distanceTo(Tiles.GRINDER) > 2);
 
         // set camera
         ctx.camera.pitch(true);
@@ -74,20 +74,20 @@ public class GetBonemeal extends Task<ClientContext> {
         int maxRepeat = 15;
         do {
             // load
-            ctx.inventory.select().id(Ids.Bones).poll().interact(true, Actions.Use);
-            ctx.objects.select().id(Ids.Grinder_Loader).poll().interact(true, Actions.Use);
+            ctx.inventory.select().id(Ids.BONES).poll().interact(true, Actions.USE);
+            ctx.objects.select().id(Ids.GRINDER_LOADER).poll().interact(true, Actions.USE);
             do {
                 Toolbox.sleep(2000);
             } while (!Toolbox.isPlayerIdle(ctx));
 
             // wind
-            ctx.objects.select().id(Ids.Grinder_Grinder).poll().interact(true, Actions.Wind);
+            ctx.objects.select().id(Ids.GRINDER_GRINDER).poll().interact(true, Actions.WIND);
             do {
                 Toolbox.sleep(2000);
             } while (!Toolbox.isPlayerIdle(ctx));
 
             // empty
-            ctx.objects.select().id(Ids.Grinder_Bin).poll().interact(true, Actions.Empty);
+            ctx.objects.select().id(Ids.GRINDER_BIN).poll().interact(true, Actions.EMPTY);
             do {
                 Toolbox.sleep(2000);
             } while (!Toolbox.isPlayerIdle(ctx));
@@ -98,16 +98,16 @@ public class GetBonemeal extends Task<ClientContext> {
                 return -1;
             }
 
-        } while (Toolbox.countItemInInventory(ctx, Ids.Bonemeal) != MiscConstants.maxNumPots);
+        } while (Toolbox.countItemInInventory(ctx, Ids.BONEMEAL) != MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
 
         // done, go back to ectophial
         Toolbox.sleep(500);
-        ctx.inventory.select().id(Ids.Ectophial_Full).poll().interact(true, Actions.Empty);
+        ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
 
         // wait to fill up ectophial again
         do {
             Toolbox.sleep(1000);
-        } while (Toolbox.itemInInventory(ctx, Ids.Ectophial_Empty));
+        } while (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_EMPTY));
 
         return 0;
     }

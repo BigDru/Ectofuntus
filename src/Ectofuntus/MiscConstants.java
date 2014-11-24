@@ -1,4 +1,4 @@
-package Ectofuntus;
+package ectofuntus;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,9 +8,7 @@ package Ectofuntus;
  * Purpose: Keeps track of misc constants.
  */
 public class MiscConstants {
-    public static final int maxNumPots = 9;
-    public static final int maxNumBuckets = 9;
-    public static final int maxNumBones = 9;
-    public static final int inventorySize = 28;
-    public static final int agilityLevelForWeatheredWall = 58;
+    public static final int MAX_COUNT_FOR_EACH_ITEM = 9;
+    public static final int INVENTORY_SIZE = 28;
+    public static final int WEATHERED_WALL_AGILITY_LEVEL_REQ = 58;
 }

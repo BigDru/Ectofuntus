@@ -1,6 +1,6 @@
-package Ectofuntus.Tasks;
+package ectofuntus.tasks;
 
-import Ectofuntus.*;
+import ectofuntus.*;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Item;
@@ -31,19 +31,19 @@ public class Bank extends Task<ClientContext> {
         boolean hasWorshipMaterial;
 
         // what is in inventory?
-        boolean containsEctophial = Toolbox.itemInInventory(ctx, Ids.Ectophial_Full);
-        boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.Pot) == MiscConstants.maxNumPots;
-        boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.Bones) == MiscConstants.maxNumBones;
-        boolean hasMaxBonemeals = Toolbox.countItemInInventory(ctx, Ids.Bonemeal) == MiscConstants.maxNumPots;
-        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.Bucket) == MiscConstants.maxNumBuckets;
-        boolean hasMaxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BucketOfSlime) == MiscConstants.maxNumBuckets;
-        boolean inBank = ctx.players.local().tile().distanceTo(Tiles.Bank) < 9;
+        boolean containsEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
+        boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBonemeal = Toolbox.countItemInInventory(ctx, Ids.BONEMEAL) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BUCKET_OF_SLIME) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean inBank = ctx.players.local().tile().distanceTo(Tiles.BANK) < 9;
 
         // check conditions
         hasFullInventory = containsEctophial && hasMaxPots && hasMaxBones && hasMaxBuckets;
         hasSlimeBuckets = containsEctophial && hasMaxPots && hasMaxBones && hasMaxBucketsOfSlime;
-        hasBonemeals = containsEctophial && hasMaxBonemeals && hasMaxBuckets;
-        hasWorshipMaterial = containsEctophial && hasMaxBonemeals && hasMaxBucketsOfSlime;
+        hasBonemeals = containsEctophial && hasMaxBonemeal && hasMaxBuckets;
+        hasWorshipMaterial = containsEctophial && hasMaxBonemeal && hasMaxBucketsOfSlime;
 
         return ((!(hasFullInventory || hasSlimeBuckets || hasBonemeals || hasWorshipMaterial)) && inBank);
     }
@@ -52,19 +52,18 @@ public class Bank extends Task<ClientContext> {
     public int execute() {
         System.out.println("Bank");
         // what we have
-        int numPots = Toolbox.countItemInInventory(ctx, Ids.Pot);
-        int numBuckets = Toolbox.countItemInInventory(ctx, Ids.Bucket);
-        int numBones = Toolbox.countItemInInventory(ctx, Ids.Bones);
-        // what we need
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.Ectophial_Full);
+        int numPotsInInventory = Toolbox.countItemInInventory(ctx, Ids.POT);
+        int numBucketsInInventory = Toolbox.countItemInInventory(ctx, Ids.BUCKET);
+        int numBonesInInventory = Toolbox.countItemInInventory(ctx, Ids.BONES);
+        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
 
         // open bank
         while (!ctx.bank.opened()) {
-            GameObject bank = ctx.objects.select().id(Ids.BankBooth).nearest().poll();
+            GameObject bank = ctx.objects.select().id(Ids.BANK_BOOTH).nearest().poll();
             if (!bank.inViewport()) {
                 ctx.camera.turnTo(bank);
             }
-            bank.interact(true, Actions.Bank);
+            bank.interact(true, Actions.BANK);
             Toolbox.sleep(1500);
         }
 
@@ -72,10 +71,10 @@ public class Bank extends Task<ClientContext> {
         System.out.println("Depositing Junk");
         for (Item i : ctx.inventory.items()) {
             switch (i.id()) {
-                case Ids.Ectophial_Full:
-                case Ids.Bones:
-                case Ids.Bucket:
-                case Ids.Pot:
+                case Ids.ECTOPHIAL_FULL:
+                case Ids.BONES:
+                case Ids.BUCKET:
+                case Ids.POT:
                     break;
                 default:
                     // does not belong, deposit
@@ -86,38 +85,45 @@ public class Bank extends Task<ClientContext> {
 
         // withdraw items
         System.out.println("Withdrawing");
+        // ectophial
         if (!hasEctophial) {
-            ctx.bank.withdraw(Ids.Ectophial_Full, org.powerbot.script.rt4.Bank.Amount.ONE);
+            ctx.bank.withdraw(Ids.ECTOPHIAL_FULL, org.powerbot.script.rt4.Bank.Amount.ONE);
             Toolbox.sleep(500);
         }
-        if (numPots < MiscConstants.maxNumPots) {
-            ctx.bank.withdraw(Ids.Pot, MiscConstants.maxNumPots - numPots);
-        } else if (numPots > MiscConstants.maxNumPots) {
-            ctx.bank.deposit(Ids.Pot, numPots - MiscConstants.maxNumPots);
-        }
-        Toolbox.sleep(500);
-        if (numBuckets < MiscConstants.maxNumBuckets) {
-            ctx.bank.withdraw(Ids.Bucket, MiscConstants.maxNumBuckets - numBuckets);
-        } else if (numBuckets > MiscConstants.maxNumBuckets) {
-            ctx.bank.deposit(Ids.Pot, numBuckets - MiscConstants.maxNumBuckets);
-        }
-        Toolbox.sleep(500);
-        if (numBones < MiscConstants.maxNumBones) {
-            ctx.bank.withdraw(Ids.Bones, MiscConstants.maxNumBones - numBones);
-        } else if (numBones > MiscConstants.maxNumBones) {
-            ctx.bank.deposit(Ids.Pot, numBones - MiscConstants.maxNumBones);
-        }
-        Toolbox.sleep(500);
-        ctx.bank.close();
 
-        // done, go back to ectophial
+        // pots
+        if (numPotsInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.withdraw(Ids.POT, MiscConstants.MAX_COUNT_FOR_EACH_ITEM - numPotsInInventory);
+        } else if (numPotsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.deposit(Ids.POT, numPotsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
+        }
         Toolbox.sleep(500);
-        ctx.inventory.select().id(Ids.Ectophial_Full).poll().interact(true, Actions.Empty);
+
+        // buckets
+        if (numBucketsInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.withdraw(Ids.BUCKET, MiscConstants.MAX_COUNT_FOR_EACH_ITEM - numBucketsInInventory);
+        } else if (numBucketsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.deposit(Ids.BUCKET, numBucketsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
+        }
+        Toolbox.sleep(500);
+
+        // bones
+        if (numBonesInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.withdraw(Ids.BONES, MiscConstants.MAX_COUNT_FOR_EACH_ITEM - numBonesInInventory);
+        } else if (numBonesInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
+            ctx.bank.deposit(Ids.BONES, numBonesInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
+        }
+        Toolbox.sleep(500);
+
+        // done. Close & go back to ectofuntus
+        ctx.bank.close();
+        Toolbox.sleep(500);
+        ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
 
         // wait to fill up ectophial again
         do {
             Toolbox.sleep(1000);
-        } while (Toolbox.itemInInventory(ctx, Ids.Ectophial_Empty));
+        } while (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_EMPTY));
 
         return 0;
     }
