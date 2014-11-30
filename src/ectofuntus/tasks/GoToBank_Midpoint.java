@@ -7,13 +7,13 @@ import org.powerbot.script.rt4.Path;
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 1:47 PM
- * Purpose: Go to Bank while in port. (From midpoint)
+ * Date: 29/11/14
+ * Time: 6:46 PM
+ * Purpose: Go to midpoint once in port.
  */
-public class GoToBank extends Task<ClientContext> {
+public class GoToBank_Midpoint extends Task<ClientContext> {
 
-    public GoToBank(ClientContext ctx) {
+    public GoToBank_Midpoint(ClientContext ctx) {
         super(ctx);
     }
 
@@ -25,21 +25,20 @@ public class GoToBank extends Task<ClientContext> {
         double distanceMidToBank = Tiles.MIDWAY_BETWEEN_BANK_AND_BARRIER.distanceTo(Areas.BANK.getCentralTile());
 
         boolean inPort = Areas.PORT_PHASMATYS.contains(ctx.players.local().tile());
-        boolean atBank = Areas.BANK.contains(ctx.players.local().tile());
         boolean atMid = distancePlayerToMid <= threshold;
-        boolean isBankCloserThanMid = distancePlayerToBank <= distancePlayerToMid;
-        boolean isBankCloserThanDistanceMidToBank = distancePlayerToBank <= distanceMidToBank;
+        boolean isMidCloserThanBank = distancePlayerToMid < distancePlayerToBank;
+        boolean isBankFartherThanDistanceMidToBank = distancePlayerToBank > distanceMidToBank;
 
-        return (inPort && !atBank && (atMid || isBankCloserThanMid || isBankCloserThanDistanceMidToBank));
+        return (inPort && isMidCloserThanBank && !atMid && isBankFartherThanDistanceMidToBank);
     }
 
     @Override
     public int execute() {
         // Antiban reaction buffer
         Toolbox.sleep(500);
-        System.out.println("Go To Bank");
+        System.out.println("Go To Midpoint");
 
-        Path path = ctx.movement.findPath(Areas.BANK.getCentralTile());
+        Path path = ctx.movement.findPath(Tiles.MIDWAY_BETWEEN_BANK_AND_BARRIER);
         path.traverse();
 
         Toolbox.sleep(1000);

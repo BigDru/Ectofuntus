@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8f43730-1364-4e9a-a752-b3fd2cd60efd" name="Default" comment="" />
+    <list default="true" id="a8f43730-1364-4e9a-a752-b3fd2cd60efd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank_Midpoint.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBarrier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/PassBarrier.java" />
+      <change type="DELETED" beforePath="C:\Users\Dru\Dropbox\Dev\RSBot Dev\Ectofuntus\src\ectofuntus\tasks\GetBonemeal.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Dru\Dropbox\Dev\RSBot Dev\Ectofuntus\src\ectofuntus\tasks\GetSlimeBuckets.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ectofuntus/tasks/Bank.java" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/Bank.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java" afterPath="$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ectofuntus/Tiles.java" afterPath="$PROJECT_DIR$/src/ectofuntus/Tiles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java" afterPath="$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Ectofuntus.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Task.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416293919935" ignored="false" />
-    <file path="/Dummy.txt" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416337045648" ignored="false" />
+    <file path="/Dummy.txt" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417328414335" ignored="false" />
     <file path="/Actions.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788321244" ignored="false" />
     <file path="$PROJECT_DIR$/src/Ectofuntus/ItemIds.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416294338572" ignored="false" />
     <file path="/Ids.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788528807" ignored="false" />
     <file path="/fragment.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788202537" ignored="false" />
     <file path="/Animations.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416295450667" ignored="false" />
-    <file path="/Ectofuntus.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788856045" ignored="false" />
-    <file path="/Areas.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416331513310" ignored="false" />
+    <file path="/Ectofuntus.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417308563238" ignored="false" />
+    <file path="/Areas.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417103790727" ignored="false" />
     <file path="/Toolbox.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788828091" ignored="false" />
-    <file path="/Tiles.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788712315" ignored="false" />
-    <file path="/Bank.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416789368133" ignored="false" />
+    <file path="/Tiles.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417304217969" ignored="false" />
+    <file path="/Bank.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417332156730" ignored="false" />
     <file path="/MiscConstants.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416788599102" ignored="false" />
-    <file path="/GetBonemeal.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416789916687" ignored="false" />
-    <file path="/GetSlimeBuckets.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416790053529" ignored="false" />
-    <file path="/Worship.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416790177796" ignored="false" />
-    <file path="/GoToBank.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416790123134" ignored="false" />
+    <file path="/GetBonemeal.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416953454007" ignored="false" />
+    <file path="/GetSlimeBuckets.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416798650450" ignored="false" />
+    <file path="/Worship.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417383917499" ignored="false" />
+    <file path="/GoToBank.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417311136751" ignored="false" />
     <file path="$PROJECT_DIR$/../../rsBot/src/Misc/Toolbox.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416451419610" ignored="false" />
     <file path="$PROJECT_DIR$/../../rsBot/src/Master/Superheat/Steel/Cast.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416451570608" ignored="false" />
     <file path="/Cast.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416451535629" ignored="false" />
-    <file path="/a.dummy" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416789872160" ignored="false" />
+    <file path="/a.dummy" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416805375801" ignored="false" />
+    <file path="/FillBuckets.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417381252903" ignored="false" />
+    <file path="/Teleport.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417311500320" ignored="false" />
+    <file path="/GoDownTrapdoor.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417380308429" ignored="false" />
+    <file path="/TraverseLVL3.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416854769590" ignored="false" />
+    <file path="/TraverseLVL2.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416855416451" ignored="false" />
+    <file path="/TraverseLVL1.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416952909143" ignored="false" />
+    <file path="/FillEctophial.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1416952985808" ignored="false" />
+    <file path="/Grind.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417386653783" ignored="false" />
+    <file path="/GoToGrinder.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417381377100" ignored="false" />
+    <file path="/PassBarrier.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417304125704" ignored="false" />
+    <file path="/GoToBarrier.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417311944233" ignored="false" />
+    <file path="/GoToBank_Midpoint.java" changelist="a8f43730-1364-4e9a-a752-b3fd2cd60efd" time="1417310749450" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,23 +101,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java" line="2" class="Worship.java" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -102,35 +110,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GetBonemeal.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GetBonemeal.java">
+      <file leaf-file-name="GoToBarrier.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBarrier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="94" selection-start="3509" selection-end="3509" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="60" column="47" selection-start="2490" selection-end="2490" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetSlimeBuckets.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GetSlimeBuckets.java">
+      <file leaf-file-name="Ectofuntus.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="103" selection-start="3010" selection-end="3010" vertical-scroll-proportion="1.6257379">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="56" column="52" selection-start="1778" selection-end="1778" vertical-scroll-proportion="0.62705666">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoToBank.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java">
+      <file leaf-file-name="FillBuckets.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/FillBuckets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="98" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="59" column="71" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Grind.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Grind.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="27" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,7 +149,34 @@
       <file leaf-file-name="Worship.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="103" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0">
+            <state line="82" column="136" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TraverseLVL3.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/TraverseLVL3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoToBank.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="130" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoDownTrapdoor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoDownTrapdoor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="84" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,35 +191,43 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Tiles.java" />
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Actions.java" />
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/Worship.java" />
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Tasks/GoToBank.java" />
-        <option value="$PROJECT_DIR$/src/Ectofuntus/Ectofuntus.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/Actions.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/Ids.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/MiscConstants.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/Tiles.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/Toolbox.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/Bank.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/FillEctophial.java" />
         <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GetBonemeal.java" />
-        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GetSlimeBuckets.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/Areas.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/Tiles.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/PassBarrier.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank_Midpoint.java" />
         <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/Teleport.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/Bank.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GoDownTrapdoor.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/FillBuckets.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GoToGrinder.java" />
         <option value="$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/GoToBarrier.java" />
+        <option value="$PROJECT_DIR$/src/ectofuntus/tasks/Grind.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -190,7 +236,7 @@
     <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="Undo Check Out" />
     <OptionsSetting value="true" id="Get Latest Version" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -209,7 +255,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -270,7 +316,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,12 +334,12 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Application.RSBot">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -308,6 +354,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -336,19 +395,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -443,33 +489,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961598" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50511944" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32423207" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19743863" sideWeight="0.6703786" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20151515" sideWeight="0.49488056" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -538,69 +584,76 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Actions.java">
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Teleport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="717" selection-end="717" vertical-scroll-proportion="0.0">
+        <state line="47" column="27" selection-start="2220" selection-end="2232" vertical-scroll-proportion="0.84794277">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ectofuntus/Tiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="18" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.48738533">
+        <state line="11" column="20" selection-start="215" selection-end="215" vertical-scroll-proportion="0.33274022">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="252" selection-end="252" vertical-scroll-proportion="0.21444954">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/MiscConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="356" selection-end="356" vertical-scroll-proportion="0.27293578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Toolbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="33" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.7855505">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="40" selection-start="638" selection-end="638" vertical-scroll-proportion="0.42889908">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="70" selection-start="3731" selection-end="3754" vertical-scroll-proportion="0.0">
+        <state line="104" column="112" selection-start="3944" selection-end="3944" vertical-scroll-proportion="0.8120301">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank_Midpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="8" selection-start="453" selection-end="1226" vertical-scroll-proportion="0.042606518">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/PassBarrier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="23" selection-start="928" selection-end="928" vertical-scroll-proportion="0.5313283">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/TraverseLVL1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="12" selection-start="227" selection-end="244" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Ids.java">
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/TraverseLVL3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="188" selection-end="202" vertical-scroll-proportion="0.0">
+        <state line="14" column="13" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GetBonemeal.java">
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Actions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="94" selection-start="3509" selection-end="3509" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="172" selection-end="172" vertical-scroll-proportion="0.265625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToGrinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="30" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.9305556">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoDownTrapdoor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="84" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -609,28 +662,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="98" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="24" column="130" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GoToBarrier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="47" selection-start="2490" selection-end="2490" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/FillBuckets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="71" selection-start="1937" selection-end="1937" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Grind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="27" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/Worship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="103" selection-start="763" selection-end="763" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="82" column="136" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ectofuntus/tasks/GetSlimeBuckets.java">
+    <entry file="file://$PROJECT_DIR$/src/ectofuntus/Ectofuntus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="103" selection-start="3010" selection-end="3010" vertical-scroll-proportion="1.6257379">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="56" column="52" selection-start="1778" selection-end="1778" vertical-scroll-proportion="0.62705666">
+          <folding />
         </state>
       </provider>
     </entry>

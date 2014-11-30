@@ -20,32 +20,13 @@ public class Bank extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        // more of a when not to activate function.
-        // ectophial, 9 bones, 9 pots, 9 buckets
-        boolean hasFullInventory;
-        // ectophial, 9 bones, 9 pots, 9 bucketsOfSlime
-        boolean hasSlimeBuckets;
-        // ectophial, 9 Bonemeals, 9 buckets
-        boolean hasBonemeals;
-        // ectophial, 9 Bonemeals, 9 bucketsOfSlime
-        boolean hasWorshipMaterial;
-
         // what is in inventory?
-        boolean containsEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
         boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBonemeal = Toolbox.countItemInInventory(ctx, Ids.BONEMEAL) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BUCKET_OF_SLIME) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean inBank = ctx.players.local().tile().distanceTo(Tiles.BANK) < 9;
+        boolean atBank = Areas.BANK.contains(ctx.players.local().tile());
 
-        // check conditions
-        hasFullInventory = containsEctophial && hasMaxPots && hasMaxBones && hasMaxBuckets;
-        hasSlimeBuckets = containsEctophial && hasMaxPots && hasMaxBones && hasMaxBucketsOfSlime;
-        hasBonemeals = containsEctophial && hasMaxBonemeal && hasMaxBuckets;
-        hasWorshipMaterial = containsEctophial && hasMaxBonemeal && hasMaxBucketsOfSlime;
-
-        return ((!(hasFullInventory || hasSlimeBuckets || hasBonemeals || hasWorshipMaterial)) && inBank);
+        return (atBank && (!hasMaxPots || !hasMaxBones || !hasMaxBuckets));
     }
 
     @Override
@@ -58,6 +39,7 @@ public class Bank extends Task<ClientContext> {
         boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
 
         // open bank
+        int maxRetry = 7;
         while (!ctx.bank.opened()) {
             GameObject bank = ctx.objects.select().id(Ids.BANK_BOOTH).nearest().poll();
             if (!bank.inViewport()) {
@@ -65,10 +47,15 @@ public class Bank extends Task<ClientContext> {
             }
             bank.interact(true, Actions.BANK);
             Toolbox.sleep(1500);
+
+            maxRetry--;
+            if (maxRetry < 0){
+                return -2;
+            }
         }
 
         // deposit junk
-        System.out.println("Depositing Junk");
+        System.out.println(" - Depositing Junk");
         for (Item i : ctx.inventory.items()) {
             switch (i.id()) {
                 case Ids.ECTOPHIAL_FULL:
@@ -84,7 +71,7 @@ public class Bank extends Task<ClientContext> {
         }
 
         // withdraw items
-        System.out.println("Withdrawing");
+        System.out.println(" - Withdrawing");
         // ectophial
         if (!hasEctophial) {
             ctx.bank.withdraw(Ids.ECTOPHIAL_FULL, org.powerbot.script.rt4.Bank.Amount.ONE);
@@ -118,12 +105,7 @@ public class Bank extends Task<ClientContext> {
         // done. Close & go back to ectofuntus
         ctx.bank.close();
         Toolbox.sleep(500);
-        ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
-
-        // wait to fill up ectophial again
-        do {
-            Toolbox.sleep(1000);
-        } while (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_EMPTY));
+        System.out.println("Done.");
 
         return 0;
     }

@@ -23,21 +23,39 @@ public class Ectofuntus extends PollingScript<ClientContext> {
     @Override
     public void start() {
         super.start();
-        taskList.addAll(Arrays.asList(new GoToBank(ctx), new Bank(ctx), new GetBonemeal(ctx), new GetSlimeBuckets(ctx), new Worship(ctx)));
-        ctx.camera.pitch(true);
+        taskList.addAll(Arrays.asList(new Teleport(ctx),
+                new FillEctophial(ctx),
+                new GoToGrinder(ctx),
+                new Grind(ctx),
+                new GoDownTrapdoor(ctx),
+                new TraverseLVL3(ctx),
+                new TraverseLVL2(ctx),
+                new TraverseLVL1(ctx),
+                new FillBuckets(ctx),
+                new GoToBarrier(ctx),
+                new PassBarrier(ctx),
+                new GoToBank_Midpoint(ctx),
+                new GoToBank(ctx),
+                new Bank(ctx),
+                new Worship(ctx)));
     }
 
     @Override
     public void poll() {
-        for(Task t : taskList){
+        ctx.camera.pitch(true);
+        for (Task t : taskList) {
             // check energy
-            if (ctx.movement.energyLevel() == 100){
-                if (!ctx.movement.running()){
+            if (ctx.movement.energyLevel() > 85) {
+                if (!ctx.movement.running()) {
                     ctx.movement.running(true);
                 }
             }
-            if (t.activate()){
-                t.execute();
+            if (t.activate()) {
+                int r = t.execute();
+                // if failed -2, stop script
+                if (r == -2) {
+                    ctx.controller.stop();
+                }
             }
         }
     }
