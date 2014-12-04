@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Item;
 
@@ -21,9 +21,9 @@ public class Bank extends Task<ClientContext> {
     @Override
     public boolean activate() {
         // what is in inventory?
-        boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxPots = ctx.inventory.select().id(Ids.POT).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBones = ctx.inventory.select().id(Ids.BONES).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBuckets = ctx.inventory.select().id(Ids.BUCKET).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         boolean atBank = Areas.BANK.contains(ctx.players.local().tile());
 
         return (atBank && (!hasMaxPots || !hasMaxBones || !hasMaxBuckets));
@@ -33,10 +33,10 @@ public class Bank extends Task<ClientContext> {
     public int execute() {
         System.out.println("Bank");
         // what we have
-        int numPotsInInventory = Toolbox.countItemInInventory(ctx, Ids.POT);
-        int numBucketsInInventory = Toolbox.countItemInInventory(ctx, Ids.BUCKET);
-        int numBonesInInventory = Toolbox.countItemInInventory(ctx, Ids.BONES);
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
+        int numPotsInInventory = ctx.inventory.select().id(Ids.POT).size();
+        int numBucketsInInventory = ctx.inventory.select().id(Ids.BUCKET).size();
+        int numBonesInInventory = ctx.inventory.select().id(Ids.BONES).size();
+        boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
 
         // open bank
         int maxRetry = 7;
@@ -46,7 +46,7 @@ public class Bank extends Task<ClientContext> {
                 ctx.camera.turnTo(bank);
             }
             bank.interact(true, Actions.BANK);
-            Toolbox.sleep(1500);
+            ctx.sleep(1500);
 
             maxRetry--;
             if (maxRetry < 0){
@@ -75,7 +75,7 @@ public class Bank extends Task<ClientContext> {
         // ectophial
         if (!hasEctophial) {
             ctx.bank.withdraw(Ids.ECTOPHIAL_FULL, org.powerbot.script.rt4.Bank.Amount.ONE);
-            Toolbox.sleep(500);
+            ctx.sleep(500);
         }
 
         // pots
@@ -84,7 +84,7 @@ public class Bank extends Task<ClientContext> {
         } else if (numPotsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.POT, numPotsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        Toolbox.sleep(500);
+        ctx.sleep(500);
 
         // buckets
         if (numBucketsInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
@@ -92,7 +92,7 @@ public class Bank extends Task<ClientContext> {
         } else if (numBucketsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.BUCKET, numBucketsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        Toolbox.sleep(500);
+        ctx.sleep(500);
 
         // bones
         if (numBonesInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
@@ -100,11 +100,11 @@ public class Bank extends Task<ClientContext> {
         } else if (numBonesInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.BONES, numBonesInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        Toolbox.sleep(500);
+        ctx.sleep(500);
 
         // done. Close & go back to ectofuntus
         ctx.bank.close();
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Done.");
 
         return 0;

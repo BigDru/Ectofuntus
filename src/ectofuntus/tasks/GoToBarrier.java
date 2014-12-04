@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.Path;
 
 /**
@@ -30,12 +30,12 @@ public class GoToBarrier extends Task<ClientContext> {
         boolean hasWorshipMaterial;
 
         // what is in inventory?
-        boolean containsEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
-        boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBonemeals = Toolbox.countItemInInventory(ctx, Ids.BONEMEAL) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBucketsOfSlime = Toolbox.countItemInInventory(ctx, Ids.BUCKET_OF_SLIME) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean containsEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
+        boolean hasMaxPots = ctx.inventory.select().id(Ids.POT).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBones = ctx.inventory.select().id(Ids.BONES).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBonemeals = ctx.inventory.select().id(Ids.BONEMEAL).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBuckets = ctx.inventory.select().id(Ids.BUCKET).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBucketsOfSlime = ctx.inventory.select().id(Ids.BUCKET_OF_SLIME).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         boolean atEctofuntus = Areas.ECTOFUNTUS.contains(ctx.players.local().tile());
 
         // check conditions
@@ -50,12 +50,12 @@ public class GoToBarrier extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Go to Barrier");
         Path path = ctx.movement.findPath(Areas.NORTH_OF_BARRIER.getCentralTile());
         path.traverse();
 
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Done.");
         return 0;
     }

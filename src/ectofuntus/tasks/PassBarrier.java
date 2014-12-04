@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.GameObject;
 
 /**
@@ -25,15 +25,15 @@ public class PassBarrier extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Passing Barrier");
 
         GameObject barrier = ctx.objects.select().id(Ids.ENERGY_BARRIER).nearest().poll();
         ctx.camera.turnTo(barrier);
-        Toolbox.sleep(1000);
+        ctx.sleep(1000);
 
         barrier.interact(true, Actions.PAY_TOLL);
-        Toolbox.sleep(4000);
+        ctx.sleep(4000);
 
         System.out.println("Done.");
         return 0;

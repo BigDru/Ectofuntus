@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Path;
 
@@ -20,9 +20,9 @@ public class GoDownTrapdoor extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
-        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasBonesOrBonemeals = (Toolbox.itemInInventory(ctx, Ids.BONES) || Toolbox.itemInInventory(ctx, Ids.BONEMEAL));
+        boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
+        boolean hasMaxBuckets = ctx.inventory.select().id(Ids.BUCKET).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasBonesOrBonemeals = (ctx.itemInInventory(Ids.BONES) || ctx.itemInInventory(Ids.BONEMEAL));
         boolean atEctofuntus = Areas.ECTOFUNTUS.contains(ctx.players.local().tile());
         return (hasEctophial && hasMaxBuckets && atEctofuntus && hasBonesOrBonemeals);
     }
@@ -30,7 +30,7 @@ public class GoDownTrapdoor extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Trapdoor");
 
         // walk to trapdoor
@@ -38,7 +38,7 @@ public class GoDownTrapdoor extends Task<ClientContext> {
         Path path = ctx.movement.findPath(Tiles.TRAPDOOR);
         while (ctx.players.local().tile().distanceTo(Tiles.TRAPDOOR) > 1) {
             path.traverse();
-            Toolbox.sleep(1000);
+            ctx.sleep(1000);
 
             if (maxRetry <= 0){
                 return -1;
@@ -55,7 +55,7 @@ public class GoDownTrapdoor extends Task<ClientContext> {
                 ctx.camera.turnTo(closedTrapdoor);
             }
             closedTrapdoor.interact(true, Actions.OPEN);
-            Toolbox.sleep(500);
+            ctx.sleep(500);
 
             if (maxRetry <= 0){
                 return -1;
@@ -67,7 +67,7 @@ public class GoDownTrapdoor extends Task<ClientContext> {
         maxRetry = 5;
         while (Areas.ECTOFUNTUS.contains(ctx.players.local().tile())) {
             ctx.objects.select().id(Ids.TRAPDOOR_OPEN).poll().interact(true, Actions.CLIMB_DOWN);
-            Toolbox.sleep(500);
+            ctx.sleep(500);
 
             if (maxRetry <= 0){
                 return -1;

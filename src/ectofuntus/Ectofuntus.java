@@ -3,7 +3,6 @@ package ectofuntus;
 import ectofuntus.tasks.*;
 import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script;
-import org.powerbot.script.rt4.ClientContext;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +44,8 @@ public class Ectofuntus extends PollingScript<ClientContext> {
         ctx.camera.pitch(true);
         for (Task t : taskList) {
             // check energy
-            if (ctx.movement.energyLevel() > 85) {
+            System.out.println(ctx.movement.energyLevel());
+            if (ctx.movement.energyLevel() > 65) {
                 if (!ctx.movement.running()) {
                     ctx.movement.running(true);
                 }

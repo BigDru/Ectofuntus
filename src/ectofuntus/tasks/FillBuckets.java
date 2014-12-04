@@ -1,7 +1,6 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.GameObject;
 
 /**
@@ -19,9 +18,9 @@ public class FillBuckets extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
+        boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
         boolean atPool = Areas.POOL_OF_SLIME.contains(ctx.players.local().tile());
-        boolean haveBucket = Toolbox.itemInInventory(ctx, Ids.BUCKET);
+        boolean haveBucket = ctx.itemInInventory(Ids.BUCKET);
 
         return (hasEctophial && atPool && haveBucket);
     }
@@ -29,7 +28,7 @@ public class FillBuckets extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Fill buckets");
         // Fill
         boolean filledUp = false;
@@ -37,19 +36,19 @@ public class FillBuckets extends Task<ClientContext> {
         GameObject pool = ctx.objects.select().id(Ids.POOL_OF_SLIME).nearest().poll();
         do {
             // click on pool
-            if (Toolbox.isPlayerIdle(ctx)) {
+            if (ctx.isPlayerIdle()) {
                 ctx.inventory.select().id(Ids.BUCKET).poll().interact(true, Actions.USE);
                 ctx.camera.turnTo(pool);
                 pool.interact(true, Actions.USE);
             }
             // reached max num?
-            filledUp = Toolbox.countItemInInventory(ctx, Ids.BUCKET_OF_SLIME) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+            filledUp = ctx.inventory.select().id(Ids.BUCKET_OF_SLIME).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
             maxRepeat--;
 
             // wait 8 sec or until buckets are filled
             for (int i = 0; i < 9; i++){
-                if (Toolbox.itemInInventory(ctx, Ids.BUCKET)){
-                    Toolbox.sleep(1000);
+                if (ctx.itemInInventory(Ids.BUCKET)){
+                    ctx.sleep(1000);
                 } else {
                     System.out.println("Done.");
                     return 0;

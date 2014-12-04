@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.Path;
 
 /**
@@ -35,13 +35,13 @@ public class GoToBank_Midpoint extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Go To Midpoint");
 
         Path path = ctx.movement.findPath(Tiles.MIDWAY_BETWEEN_BANK_AND_BARRIER);
         path.traverse();
 
-        Toolbox.sleep(1000);
+        ctx.sleep(1000);
         System.out.println("Done.");
         return 0;
     }

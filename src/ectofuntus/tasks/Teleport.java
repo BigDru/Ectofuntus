@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,13 +19,13 @@ public class Teleport extends Task<ClientContext> {
     @Override
     public boolean activate() {
         // inventory booleans
-        boolean hasEctophial = Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL);
-        boolean hasBuckets = Toolbox.itemInInventory(ctx, Ids.BUCKET);
-        boolean hasPots = Toolbox.itemInInventory(ctx, Ids.POT);
-        boolean hasBones = Toolbox.itemInInventory(ctx, Ids.BONES);
-        boolean hasMaxPots = Toolbox.countItemInInventory(ctx, Ids.POT) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBones = Toolbox.countItemInInventory(ctx, Ids.BONES) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-        boolean hasMaxBuckets = Toolbox.countItemInInventory(ctx, Ids.BUCKET) == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
+        boolean hasBuckets = ctx.itemInInventory(Ids.BUCKET);
+        boolean hasPots = ctx.itemInInventory(Ids.POT);
+        boolean hasBones = ctx.itemInInventory(Ids.BONES);
+        boolean hasMaxPots = ctx.inventory.select().id(Ids.POT).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBones = ctx.inventory.select().id(Ids.BONES).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
+        boolean hasMaxBuckets = ctx.inventory.select().id(Ids.BUCKET).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
 
         // location booleans
         boolean atEctofuntus = Areas.ECTOFUNTUS.contains(ctx.players.local().tile());
@@ -51,15 +51,15 @@ public class Teleport extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("Teleport");
 
         // while not at ectofuntus
         int maxRetry = 5;
         while (!Areas.ECTOFUNTUS.contains(ctx.players.local().tile())) {
-            if (Toolbox.itemInInventory(ctx, Ids.ECTOPHIAL_FULL)) {
+            if (ctx.itemInInventory(Ids.ECTOPHIAL_FULL)) {
                 ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
-                Toolbox.sleep(5000);
+                ctx.sleep(5000);
             }
 
             maxRetry--;

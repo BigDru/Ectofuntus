@@ -1,7 +1,7 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-import org.powerbot.script.rt4.ClientContext;
+
 import org.powerbot.script.rt4.Constants;
 import org.powerbot.script.rt4.Path;
 
@@ -26,14 +26,14 @@ public class TraverseLVL3 extends Task<ClientContext> {
     @Override
     public int execute() {
         // Antiban reaction buffer
-        Toolbox.sleep(500);
+        ctx.sleep(500);
         System.out.println("lvl 3");
         // are we lvl 58+ in agility?
         if (ctx.skills.level(Constants.SKILLS_AGILITY) >= MiscConstants.WEATHERED_WALL_AGILITY_LEVEL_REQ) {
             // yes
             ctx.camera.angle('w');
             ctx.camera.pitch(true);
-            Toolbox.sleep(500);
+            ctx.sleep(500);
             ctx.objects.select().id(Ids.WEATHERED_WALL_ABOVE).poll().interact(true, Actions.JUMP_DOWN);
         } else {
             // no
@@ -43,7 +43,7 @@ public class TraverseLVL3 extends Task<ClientContext> {
             int maxRetry = 5;
             do {
                 path.traverse();
-                Toolbox.sleep(500);
+                ctx.sleep(500);
                 if (maxRetry <= 0) {
                     return -1;
                 }
@@ -55,7 +55,7 @@ public class TraverseLVL3 extends Task<ClientContext> {
             ctx.camera.pitch(true);
             ctx.objects.select().id(Ids.STAIRS_TO_SLIME_ABOVE).poll().interact(true, Actions.CLIMB_DOWN);
         }
-        Toolbox.sleep(1700);
+        ctx.sleep(1700);
         System.out.println("done.");
         return 0;
     }

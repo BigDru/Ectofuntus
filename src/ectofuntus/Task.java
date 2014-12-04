@@ -1,7 +1,6 @@
 package ectofuntus;
 
 import org.powerbot.script.ClientAccessor;
-import org.powerbot.script.rt4.ClientContext;
 
 /**
  * Created with IntelliJ IDEA.
