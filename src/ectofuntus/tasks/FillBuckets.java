@@ -1,13 +1,14 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.GameObject;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 23/11/14
- * Time: 10:11 PM
+ * Date: 23/11/14 - 10:11 PM
+ * Last Modified: 23/02/15 - 3:19 PM
  * Purpose: Gets bucket of slime
  */
 public class FillBuckets extends Task<ClientContext> {
@@ -26,36 +27,23 @@ public class FillBuckets extends Task<ClientContext> {
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Fill buckets");
-        // Fill
-        boolean filledUp = false;
-        int maxRepeat = 5;
-        GameObject pool = ctx.objects.select().id(Ids.POOL_OF_SLIME).nearest().poll();
-        do {
-            // click on pool
-            if (ctx.isPlayerIdle()) {
-                ctx.inventory.select().id(Ids.BUCKET).poll().interact(true, Actions.USE);
-                ctx.camera.turnTo(pool);
-                pool.interact(true, Actions.USE);
-            }
-            // reached max num?
-            filledUp = ctx.inventory.select().id(Ids.BUCKET_OF_SLIME).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
-            maxRepeat--;
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Filling buckets");
 
-            // wait 8 sec or until buckets are filled
-            for (int i = 0; i < 9; i++){
-                if (ctx.itemInInventory(Ids.BUCKET)){
-                    ctx.sleep(1000);
-                } else {
-                    System.out.println("Done.");
-                    return 0;
-                }
+        // Fill
+        GameObject pool = ctx.objects.select().id(Ids.POOL_OF_SLIME).nearest().poll();
+        ctx.inventory.select().id(Ids.BUCKET).poll().interact(true, Actions.USE);
+        ctx.camera.turnTo(pool);
+        pool.interact(true, Actions.USE);
+
+        // wait till no more buckets with checks every 1 sec for 18 checks
+        Condition.wait(new Condition.Check() {
+            @Override
+            public boolean poll() {
+                return !ctx.itemInInventory(Ids.BUCKET);
             }
-        } while (!filledUp && maxRepeat > 0);
-        System.out.println("Done.");
-        return 0;
+        }, 1000, 18);
     }
 }

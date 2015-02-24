@@ -1,13 +1,13 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-
+import org.powerbot.script.Condition;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 23/11/14
- * Time: 10:54 PM
+ * Date: 23/11/14 - 10:54 PM
+ * Last Modified: 23/02/15 - 3:21 PM
  * Purpose: Teleports to base (Ectofuntus) when needed.
  */
 public class Teleport extends Task<ClientContext> {
@@ -21,7 +21,6 @@ public class Teleport extends Task<ClientContext> {
         // inventory booleans
         boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
         boolean hasBuckets = ctx.itemInInventory(Ids.BUCKET);
-        boolean hasPots = ctx.itemInInventory(Ids.POT);
         boolean hasBones = ctx.itemInInventory(Ids.BONES);
         boolean hasMaxPots = ctx.inventory.select().id(Ids.POT).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
         boolean hasMaxBones = ctx.inventory.select().id(Ids.BONES).size() == MiscConstants.MAX_COUNT_FOR_EACH_ITEM;
@@ -42,32 +41,26 @@ public class Teleport extends Task<ClientContext> {
         boolean inKnownAreas = atEctofuntus || atBank || atPool || atGrinder || onTheWayToPool || onTheWayToBank;
         boolean doneBank = atBank && hasMaxPots && hasMaxBones && hasMaxBuckets;
         boolean doneSlime = atPool && !hasBuckets;
-        boolean doneGrinder = atGrinder && (!hasPots || !hasBones);
+        boolean grinderEmpty = ctx.varpbits.varpbit(Ids.VARPBIT_GRINDER_ID) == Ids.VARPBIT_GRINDER_EMPTY;
+        boolean doneGrinder = atGrinder && !hasBones && grinderEmpty;
 
         // return
         return hasEctophial && (!inKnownAreas || doneBank || doneSlime || doneGrinder);
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Teleport");
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Teleporting");
 
         // while not at ectofuntus
-        int maxRetry = 5;
-        while (!Areas.ECTOFUNTUS.contains(ctx.players.local().tile())) {
-            if (ctx.itemInInventory(Ids.ECTOPHIAL_FULL)) {
-                ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(true, Actions.EMPTY);
-                ctx.sleep(5000);
+        ctx.inventory.select().id(Ids.ECTOPHIAL_FULL).poll().interact(Actions.EMPTY);
+        Condition.wait(new Condition.Check() {
+            @Override
+            public boolean poll() {
+                return Areas.ECTOFUNTUS.contains(ctx.players.local().tile());
             }
-
-            maxRetry--;
-            if (maxRetry < 0) {
-                return -1;
-            }
-        }
-        System.out.println("Done.");
-        return 0;
+        });
     }
 }

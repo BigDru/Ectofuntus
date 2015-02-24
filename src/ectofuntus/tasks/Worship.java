@@ -2,15 +2,16 @@ package ectofuntus.tasks;
 
 import ectofuntus.*;
 
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.Item;
 import org.powerbot.script.rt4.Npc;
-import org.powerbot.script.rt4.Path;
+import org.powerbot.script.rt4.Skills;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 1:48 PM
+ * Date: 18/11/14 - 1:48 PM
+ * Last Modified: 23/02/15 - 3:21 PM
  * Purpose: Worships Ectofuntus.
  */
 public class Worship extends Task<ClientContext> {
@@ -24,71 +25,89 @@ public class Worship extends Task<ClientContext> {
         boolean atEctofuntus = Areas.ECTOFUNTUS.contains(ctx.players.local().tile());
         boolean hasBonemeal = ctx.itemInInventory(Ids.BONEMEAL);
         boolean hasBucketsOfSlime = ctx.itemInInventory(Ids.BUCKET_OF_SLIME);
+
         return (atEctofuntus && hasBonemeal && hasBucketsOfSlime);
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Worship");
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Worshiping");
 
-        // worship
         if (!ctx.objects.select().id(Ids.ECTOFUNTUS).poll().inViewport()) {
             ctx.camera.turnTo(ctx.objects.select().id(Ids.ECTOFUNTUS).poll());
-            ctx.sleep(1000);
         }
 
-        int maxRetry = 15;
-        do {
-            ctx.objects.select().id(Ids.ECTOFUNTUS).poll().interact(true, Actions.WORSHIP);
-            ctx.sleep(4000);
-            if (maxRetry < 0){
-                return -1;
+        Condition.wait(new Condition.Check() {
+            @Override
+            public Boolean call() {
+                if (ctx.isPlayerIdle()) {
+                    Coeus.getInstance().updateExperience(ctx.skills.experience(Skills.PRAYER));
+                    ctx.objects.select().id(Ids.ECTOFUNTUS).poll().interact(true, Actions.WORSHIP);
+                }
+                return super.call();
             }
-            maxRetry--;
-        } while (ctx.itemInInventory(Ids.BUCKET_OF_SLIME) && ctx.itemInInventory(Ids.BONEMEAL));
+
+            @Override
+            public boolean poll() {
+                return !ctx.itemInInventory(Ids.BONEMEAL) || !ctx.itemInInventory(Ids.BUCKET_OF_SLIME);
+            }
+        }, 250, 120);
+
+        // check worship complete
+        if (ctx.itemInInventory(Ids.BONEMEAL) && ctx.itemInInventory(Ids.BUCKET_OF_SLIME))
+            return;
 
         // dump extra materials
-        for (Item i : ctx.inventory.select()){
-            if (i.id() == Ids.BONEMEAL || i.id() == Ids.BUCKET_OF_SLIME){
+        for (Item i : ctx.inventory.select()) {
+            if (i.id() == Ids.BONEMEAL || i.id() == Ids.BUCKET_OF_SLIME) {
                 i.interact(true, Actions.EMPTY);
+                Condition.sleep(500);
             }
         }
-        System.out.println("Done.");
 
         // get Ecto-tokens
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Collecting Ecto-tokens");
-        Path path = ctx.movement.findPath(Tiles.GHOST_DISCIPLE);
-        maxRetry = 5;
-        do {
-            path.traverse();
-            ctx.sleep(2000);
-            if (maxRetry < 0){
-                return -1;
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Collecting Ecto-tokens");
+
+        // walk to disciple (max 6 sec)
+        ctx.movement.findPath(Tiles.GHOST_DISCIPLE).traverse();
+        Condition.wait(new Condition.Check() {
+            @Override
+            public boolean poll() {
+                return ctx.players.local().tile().distanceTo(Tiles.GHOST_DISCIPLE) < 3;
             }
-            maxRetry--;
-        } while (ctx.players.local().tile().distanceTo(Tiles.GHOST_DISCIPLE) > 2);
+        }, 250, 24);
 
         // talk to disciple
-        maxRetry = 5;
-        do {
-            Npc ghost = ctx.npcs.select().id(Ids.GHOST_DISCIPLE).nearest().poll();
-            ctx.camera.turnTo(ghost);
-            ghost.click(true);
-            ctx.sleep(2500);
-            ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_1, Ids.WIDGET_GHOST_DISCIPLE_1_COMPONENT).click(true);
-            ctx.sleep(1200);
-            ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_2, Ids.WIDGET_GHOST_DISCIPLE_2_COMPONENT).click(true);
-            ctx.sleep(1200);
-            if (maxRetry < 0){
-                return -2;
-            }
-        } while (!ctx.itemInInventory(Ids.ECTO_TOKEN));
+        Condition.wait(new Condition.Check() {
+            @Override
+            public Boolean call() {
+                Npc ghost = ctx.npcs.select().id(Ids.GHOST_DISCIPLE).nearest().poll();
+                ctx.camera.turnTo(ghost);
+                ghost.click(true);
+                Condition.sleep(2500);
+                ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_1, Ids.WIDGET_GHOST_DISCIPLE_1_COMPONENT).click(true);
+                Condition.sleep(1200);
+                ctx.widgets.component(Ids.WIDGET_GHOST_DISCIPLE_2, Ids.WIDGET_GHOST_DISCIPLE_2_COMPONENT).click(true);
+                Condition.sleep(1200);
 
-        System.out.println("Done.");
-        return 0;
+                return super.call();
+            }
+
+            @Override
+            public boolean poll() {
+                return ctx.itemInInventory(Ids.ECTO_TOKEN);
+            }
+        }, 5000, 5);
+
+        // update UI
+        if (ctx.inventory.select().id(Ids.ECTO_TOKEN).count() != 0) {
+            Coeus.getInstance().addToNumEctotokens(ctx.inventory.select().id(Ids.ECTO_TOKEN).poll().stackSize());
+        }
+
+        return;
     }
 }

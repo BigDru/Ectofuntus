@@ -17,5 +17,5 @@ public class Tiles {
     public static final Tile GRINDER = new Tile(3660, 3524, 1);
     public static final Tile STAIRS_TO_GRINDER = new Tile (3665, 3517, 0);
     public static final Tile TRAPDOOR = new Tile (3654, 3519, 0);
-    public static final Tile GHOST_DISCIPLE = new Tile (3659, 3515, 0);
+    public static final Tile GHOST_DISCIPLE = new Tile (3659, 3517, 0);
 }

@@ -5,8 +5,8 @@ import org.powerbot.script.ClientAccessor;
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 1:58 AM
+ * Date: 18/11/14 - 1:58 AM
+ * Last Modified: 20/02/15 - 8:18 PM
  * Purpose: Template for tasks.
  */
 public abstract class Task<C extends ClientContext> extends ClientAccessor<C> {
@@ -16,5 +16,5 @@ public abstract class Task<C extends ClientContext> extends ClientAccessor<C> {
 
     public abstract boolean activate();
 
-    public abstract int execute();
+    public abstract void execute();
 }

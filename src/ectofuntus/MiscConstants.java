@@ -3,8 +3,8 @@ package ectofuntus;
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 12:48 PM
+ * Date: 18/11/14 - 12:48 PM
+ * Last Modified: 21/02/15 - 12:07 AM
  * Purpose: Keeps track of misc constants.
  */
 public class MiscConstants {

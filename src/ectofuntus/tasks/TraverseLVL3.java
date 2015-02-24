@@ -2,14 +2,14 @@ package ectofuntus.tasks;
 
 import ectofuntus.*;
 
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.Constants;
-import org.powerbot.script.rt4.Path;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 24/11/14
- * Time: 12:19 AM
+ * Date: 24/11/14 - 12:19 AM
+ * Last Modified: 23/02/15 - 3:21 PM
  * Purpose: Traverses Level 3
  */
 public class TraverseLVL3 extends Task<ClientContext> {
@@ -24,39 +24,42 @@ public class TraverseLVL3 extends Task<ClientContext> {
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("lvl 3");
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Traversing lvl 3");
+
+        // camera
+        ctx.camera.angle('e');
+        ctx.camera.pitch(true);
+
         // are we lvl 58+ in agility?
         if (ctx.skills.level(Constants.SKILLS_AGILITY) >= MiscConstants.WEATHERED_WALL_AGILITY_LEVEL_REQ) {
             // yes
-            ctx.camera.angle('w');
-            ctx.camera.pitch(true);
-            ctx.sleep(500);
-            ctx.objects.select().id(Ids.WEATHERED_WALL_ABOVE).poll().interact(true, Actions.JUMP_DOWN);
+            ctx.objects.select().id(Ids.WEATHERED_WALL_ABOVE).poll().interact(Actions.JUMP_DOWN);
         } else {
             // no
             // walk to stairs level 3
-
-            Path path = ctx.movement.findPath(Tiles.LVL3_STAIRS);
-            int maxRetry = 5;
-            do {
-                path.traverse();
-                ctx.sleep(500);
-                if (maxRetry <= 0) {
-                    return -1;
+            ctx.movement.findPath(Tiles.LVL3_STAIRS).traverse();
+            Condition.wait(new Condition.Check() {
+                @Override
+                public boolean poll() {
+                    return ctx.players.local().tile().distanceTo(Tiles.LVL3_STAIRS) < 3;
                 }
-                maxRetry--;
-            } while (ctx.players.local().tile().distanceTo(Tiles.LVL3_STAIRS) > 3);
+            }, 100, 3);
 
             // go down stairs to level 2
-            ctx.camera.angle('e');
-            ctx.camera.pitch(true);
-            ctx.objects.select().id(Ids.STAIRS_TO_SLIME_ABOVE).poll().interact(true, Actions.CLIMB_DOWN);
+            if (ctx.players.local().tile().distanceTo(Tiles.LVL3_STAIRS) >= 3)
+                return;
+            ctx.objects.select().id(Ids.STAIRS_TO_SLIME_ABOVE).poll().interact(Actions.CLIMB_DOWN);
         }
-        ctx.sleep(1700);
-        System.out.println("done.");
-        return 0;
+
+        // wait 1 sec for lvl 2 to load
+        Condition.wait(new Condition.Check() {
+            @Override
+            public boolean poll() {
+                return ctx.players.local().tile().floor() == Tiles.LVL2_STAIRS_DOWN.floor();
+            }
+        }, 100, 10);
     }
 }

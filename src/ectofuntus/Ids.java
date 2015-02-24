@@ -3,8 +3,8 @@ package ectofuntus;
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 2:05 AM
+ * Date: 18/11/14 - 2:05 AM
+ * Last Modified: 21/02/15 - 12:07 AM
  * Purpose: Keeps record of Ids.
  */
 public class Ids {
@@ -32,5 +32,12 @@ public class Ids {
     public static final int WIDGET_GHOST_DISCIPLE_1_COMPONENT = 3;
     public static final int WIDGET_GHOST_DISCIPLE_2 = 241;
     public static final int WIDGET_GHOST_DISCIPLE_2_COMPONENT = 3;
+    public static final int WIDGET_BANK_ALLTAB = 12;
+    public static final int WIDGET_BANK_ALLTAB_COMPONENT = 8;
+    public static final int WIDGET_BANK_ALLTAB_SUBCOMPONENT = 10;
+    public static final int VARPBIT_GRINDER_ID = 408;
+    public static final int VARPBIT_GRINDER_EMPTY = 0x87c67fc0;
+    public static final int VARPBIT_GRINDER_LOADED = 0x87c6ffc0;
+    public static final int VARPBIT_GRINDER_GROUND = 0x87c77fc0;
     public static final int ECTO_TOKEN = 4278;
 }

@@ -2,14 +2,15 @@ package ectofuntus.tasks;
 
 import ectofuntus.*;
 
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.GameObject;
 import org.powerbot.script.rt4.Item;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 12:36 PM
+ * Date: 18/11/14 - 12:36 PM
+ * Last Modified: 23/02/15 - 3:19 PM
  * Purpose: Bank.
  */
 public class Bank extends Task<ClientContext> {
@@ -30,8 +31,11 @@ public class Bank extends Task<ClientContext> {
     }
 
     @Override
-    public int execute() {
-        System.out.println("Bank");
+    public void execute() {
+        // Antiban reaction buffer
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Banking");
+
         // what we have
         int numPotsInInventory = ctx.inventory.select().id(Ids.POT).size();
         int numBucketsInInventory = ctx.inventory.select().id(Ids.BUCKET).size();
@@ -39,23 +43,29 @@ public class Bank extends Task<ClientContext> {
         boolean hasEctophial = ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
 
         // open bank
-        int maxRetry = 7;
-        while (!ctx.bank.opened()) {
+        if (!ctx.bank.opened()) {
             GameObject bank = ctx.objects.select().id(Ids.BANK_BOOTH).nearest().poll();
             if (!bank.inViewport()) {
                 ctx.camera.turnTo(bank);
             }
             bank.interact(true, Actions.BANK);
-            ctx.sleep(1500);
+            Condition.wait(new Condition.Check() {
+                @Override
+                public boolean poll() {
+                    return ctx.bank.opened();
+                }
+            });
 
-            maxRetry--;
-            if (maxRetry < 0){
-                return -2;
+            // verify opened
+            if (!ctx.bank.opened()) {
+                return;
             }
         }
 
+        // Change to all items tab
+        ctx.widgets.component(Ids.WIDGET_BANK_ALLTAB, Ids.WIDGET_BANK_ALLTAB_COMPONENT).component(Ids.WIDGET_BANK_ALLTAB_SUBCOMPONENT).click(true);
+
         // deposit junk
-        System.out.println(" - Depositing Junk");
         for (Item i : ctx.inventory.items()) {
             switch (i.id()) {
                 case Ids.ECTOPHIAL_FULL:
@@ -71,11 +81,10 @@ public class Bank extends Task<ClientContext> {
         }
 
         // withdraw items
-        System.out.println(" - Withdrawing");
         // ectophial
         if (!hasEctophial) {
             ctx.bank.withdraw(Ids.ECTOPHIAL_FULL, org.powerbot.script.rt4.Bank.Amount.ONE);
-            ctx.sleep(500);
+            Condition.sleep(500);
         }
 
         // pots
@@ -84,7 +93,7 @@ public class Bank extends Task<ClientContext> {
         } else if (numPotsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.POT, numPotsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        ctx.sleep(500);
+        Condition.sleep(500);
 
         // buckets
         if (numBucketsInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
@@ -92,7 +101,7 @@ public class Bank extends Task<ClientContext> {
         } else if (numBucketsInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.BUCKET, numBucketsInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        ctx.sleep(500);
+        Condition.sleep(500);
 
         // bones
         if (numBonesInInventory < MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
@@ -100,13 +109,8 @@ public class Bank extends Task<ClientContext> {
         } else if (numBonesInInventory > MiscConstants.MAX_COUNT_FOR_EACH_ITEM) {
             ctx.bank.deposit(Ids.BONES, numBonesInInventory - MiscConstants.MAX_COUNT_FOR_EACH_ITEM);
         }
-        ctx.sleep(500);
+        Condition.sleep(500);
 
-        // done. Close & go back to ectofuntus
         ctx.bank.close();
-        ctx.sleep(500);
-        System.out.println("Done.");
-
-        return 0;
     }
 }

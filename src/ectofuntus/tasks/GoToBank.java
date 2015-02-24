@@ -2,13 +2,13 @@ package ectofuntus.tasks;
 
 import ectofuntus.*;
 
-import org.powerbot.script.rt4.Path;
+import org.powerbot.script.Condition;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 18/11/14
- * Time: 1:47 PM
+ * Date: 18/11/14 - 1:47 PM
+ * Last Modified: 23/02/15 - 3:19 PM
  * Purpose: Go to Bank while in port. (From midpoint)
  */
 public class GoToBank extends Task<ClientContext> {
@@ -34,16 +34,18 @@ public class GoToBank extends Task<ClientContext> {
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Go To Bank");
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Walking to bank");
 
-        Path path = ctx.movement.findPath(Areas.BANK.getCentralTile());
-        path.traverse();
+        ctx.movement.findPath(Areas.BANK.getCentralTile()).traverse();
 
-        ctx.sleep(1000);
-        System.out.println("Done.");
-        return 0;
+        Condition.wait(new Condition.Check() {
+            @Override
+            public boolean poll() {
+                return ctx.players.local().tile().distanceTo(Areas.BANK.getCentralTile()) < 3;
+            }
+        }, 200, 3);
     }
 }

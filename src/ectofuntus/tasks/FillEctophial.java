@@ -1,13 +1,13 @@
 package ectofuntus.tasks;
 
 import ectofuntus.*;
-
+import org.powerbot.script.Condition;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Dru
- * Date: 24/11/14
- * Time: 2:29 PM
+ * Date: 24/11/14 - 2:29 PM
+ * Last Modified: 23/02/15 - 3:19 PM
  * Purpose: If you're at ectofuntus and you have an empty ectophial, fill it up
  */
 public class FillEctophial extends Task<ClientContext> {
@@ -24,26 +24,26 @@ public class FillEctophial extends Task<ClientContext> {
     }
 
     @Override
-    public int execute() {
+    public void execute() {
         // Antiban reaction buffer
-        ctx.sleep(500);
-        System.out.println("Filling Ectophial");
+        Condition.sleep();
+        Coeus.getInstance().setCurrentTask("Filling Ectophial");
 
-        int maxRetry = 2;
-        while (ctx.itemInInventory(Ids.ECTOPHIAL_EMPTY)) {
-            // not full, fill ectophial
-            ctx.inventory.select().id(Ids.ECTOPHIAL_EMPTY).poll().interact(false, Actions.USE);
-            ctx.sleep(1500);
+        // wait for automatic refill
+        Condition.sleep(1500);
+
+        // still empty? fill
+        if (ctx.itemInInventory(Ids.ECTOPHIAL_EMPTY)) {
             ctx.camera.turnTo(ctx.objects.id(Ids.ECTOFUNTUS).nearest().poll());
+            ctx.inventory.select().id(Ids.ECTOPHIAL_EMPTY).poll().interact(Actions.USE);
             ctx.objects.select().id(Ids.ECTOFUNTUS).nearest().poll().interact(true, Actions.USE);
-            ctx.sleep(1500);
 
-            maxRetry--;
-            if (maxRetry < 0) {
-                return -1;
-            }
+            Condition.wait(new Condition.Check() {
+                @Override
+                public boolean poll() {
+                    return ctx.itemInInventory(Ids.ECTOPHIAL_FULL);
+                }
+            });
         }
-        System.out.println("done.");
-        return 0;
     }
 }
